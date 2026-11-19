@@ -59,7 +59,7 @@ export default function Changelog() {
               {(e) => (
                 <>
                   <div style={{ display: "flex", "flex-direction": "column", gap: "8px" }}>
-                    <div style={{ display: "flex", gap: "8px", "flex-wrap": "wrap" }}>
+                    <div class="pill-row">
                       <Pill variant="brand">{e().tag}</Pill>
                       <Show when={e().version}><Pill>v{e().version}</Pill></Show>
                       <Show when={e().date}><Pill variant="dashed">{e().date}</Pill></Show>

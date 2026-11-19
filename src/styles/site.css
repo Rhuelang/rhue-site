@@ -180,6 +180,8 @@ pre.shiki .line:empty::before { content: " "; }
 .page-head { padding: 48px 0 8px; display: flex; flex-direction: column; gap: var(--space-3); align-items: flex-start; }
 .toc { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
 .toc .aa-btn { border-radius: 9999px; }
+.pill-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.pill-row .aa-pill-dashed { height: 22px; font-size: 12px; line-height: 16px; padding: 0 var(--space-2); }
 .doc-body { padding: var(--space-6) 0 96px; }
 
 .split { display: flex; flex-wrap: wrap; gap: var(--space-8); align-items: flex-start; padding: var(--space-6) 0 96px; }
