@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/brand/logo.svg" width="180" alt="Rhue logo">
+  <img src="https://raw.githubusercontent.com/rhuelang/rhue/main/assets/Logo.svg" width="180" alt="Rhue logo">
   <h1>rhue-site</h1>
   <p>The website for <a href="https://github.com/rhuelang/rhue"><b>Rhue</b></a>, live at <a href="https://rhue.dev"><b>rhue.dev</b></a>. Solid, TypeScript and Vite, built with bun and served off Cloudflare. The docs on it all come straight out of the rhue repo, so it's never out of date with the actual language.</p>
   <p>
