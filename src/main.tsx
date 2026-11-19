@@ -9,6 +9,7 @@ import "./styles/site.css";
 
 // design notes are the heavy one, load pages when visited
 const Design = lazy(() => import("./pages/Design"));
+const Changelog = lazy(() => import("./pages/Changelog"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 render(
@@ -16,6 +17,7 @@ render(
     <Router root={Layout}>
       <Route path="/" component={Home} />
       <Route path="/design" component={Design} />
+      <Route path="/changelog/:slug?" component={Changelog} />
       <Route path="*404" component={NotFound} />
     </Router>
   ),
