@@ -21,11 +21,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # only the bits the site reads, no need for the whole compiler
       - name: Check out rhue
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ env.RHUE_REPO }}
           ref: ${{ github.event.client_payload.ref || 'main' }}
@@ -55,7 +55,7 @@ jobs:
 
       - run: bun run build
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: dist
           path: dist
@@ -69,9 +69,9 @@ jobs:
       name: production
       url: https://rhue.dev
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           name: dist
           path: dist
