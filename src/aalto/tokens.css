@@ -1,0 +1,145 @@
+/* Aalto · Cloudflare — generated from tokens.json */
+:root, [data-theme="light"] {
+  color-scheme: light;
+  --canvas: #fffaf7;
+  --elevated: #fcf7f5;
+  --recessed: #f5f1ee;
+  --base: #ffffff;
+  --tint: #f9f4f2;
+  --overlay: #faf6f3;
+  --control: #ffffff;
+  --interact: #d8d3d1;
+  --fill: #e9e4e2;
+  --fill-hover: #f7f2f0;
+  --contrast: #030201;
+  --line: #0c09081f;
+  --line-strong: #837f7d;
+  --hairline: #ede8e6;
+  --focus: #0d0a09;
+  --text-default: #1b1715;
+  --text-strong: #0d0907;
+  --text-subtle: #615d5b;
+  --text-placeholder: #898583;
+  --text-inactive: #a4a09e;
+  --text-inverse: #f9f4f2;
+  --brand: #aa4512;
+  --brand-hover: #983800;
+  --brand-ring: #842d00;
+  --on-brand: #ffffff;
+  --brand-tint: #dc846024;
+  --text-brand: #a24110;
+  --link: #006857;
+  --accent: #006f5d;
+  --on-accent: #ffffff;
+  --accent-tint: #6fd3bd40;
+  --text-accent: #005b4c;
+  --gold: #f1a118;
+  --on-gold: #281600;
+  --gold-tint: #ffd49373;
+  --text-gold: #7f490c;
+  --saddle: #53323a;
+  --success: #009965;
+  --success-tint: #ddfae7b3;
+  --text-success: #006045;
+  --danger: #de2024;
+  --danger-tint: #ffe2e280;
+  --text-danger: #bc0e15;
+  --scrim: #01000080;
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px 0 rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.08);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #040302;
+  --elevated: #070504;
+  --recessed: #0d0a09;
+  --base: #120f0d;
+  --tint: #282524;
+  --overlay: #1a1816;
+  --control: #1b1816;
+  --interact: #423f3e;
+  --fill: #282524;
+  --fill-hover: #423f3e;
+  --contrast: #fef9f7;
+  --line: #353230;
+  --line-strong: #6c6866;
+  --hairline: #282524;
+  --focus: #ede8e6;
+  --text-default: #f7f4f3;
+  --text-strong: #fcf9f8;
+  --text-subtle: #a8a3a1;
+  --text-placeholder: #7d7977;
+  --text-inactive: #55514f;
+  --text-inverse: #1a1615;
+  --brand: #aa4512;
+  --brand-hover: #bd5321;
+  --brand-ring: #842d00;
+  --on-brand: #ffffff;
+  --brand-tint: #b2502338;
+  --text-brand: #f19772;
+  --link: #65e4ca;
+  --accent: #3cd2b6;
+  --on-accent: #001c16;
+  --accent-tint: #09847138;
+  --text-accent: #8aedd7;
+  --gold: #fcab2a;
+  --on-gold: #281600;
+  --gold-tint: #8659114d;
+  --text-gold: #ffc474;
+  --saddle: #65424a;
+  --success: #00d491;
+  --success-tint: #05542840;
+  --text-success: #a3f2ce;
+  --danger: #de2024;
+  --danger-tint: #99010233;
+  --text-danger: #ff7676;
+  --scrim: #00000099;
+  --shadow-xs: 0 1px 2px 0 rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -2px rgba(0,0,0,0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -4px rgba(0,0,0,0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.6), 0 8px 10px -6px rgba(0,0,0,0.6);
+}
+
+:root {
+  /* Theme-independent ref-sheet colours: illustration and charts only. */
+  --aalto-cream: #fffde3;
+  --aalto-peach: #ffbf7e;
+  --aalto-salmon: #f58f5e;
+  --aalto-ginger: #cb6f4a;
+  --aalto-rust: #b06140;
+  --aalto-russet: #904437;
+  --aalto-saddle: #56353d;
+  --aalto-charcoal: #342c2d;
+  --aalto-teal: #00e0c0;
+  --aalto-gold: #ffb13e;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-icon: "Material Symbols Outlined";
+
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  --opacity-disabled: 0.5;
+  --opacity-muted: 0.75;
+}
