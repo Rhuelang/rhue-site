@@ -3,7 +3,7 @@
 //
 //   bun run sync                      reads ../rhue (a checkout next to this one)
 //   RHUE_DIR=path bun run sync        reads some other checkout
-//   RHUE_REPO=owner/name bun run sync reads GitHub instead (RHUE_REF, GITHUB_TOKEN for private repos)
+//   RHUE_REPO=owner/name bun run sync reads GitHub instead, unless RHUE_DIR is set (RHUE_REF, GITHUB_TOKEN for private repos)
 //
 // Files the rhue repo doesn't have yet are left alone here, so the committed
 // copies in content/ keep the site building.
@@ -16,7 +16,9 @@ const ROOT = resolve(import.meta.dirname, "..");
 const CONTENT = join(ROOT, "content");
 const BRAND = join(ROOT, "public", "brand");
 
-const REMOTE = process.env.RHUE_REPO;
+// RHUE_DIR wins when it's set. CI sets both (RHUE_REPO is what it checks out), and reading
+// GitHub anyway meant ~35 unauthenticated api calls a run, which hits the 60/hour limit fast
+const REMOTE = process.env.RHUE_DIR ? undefined : process.env.RHUE_REPO;
 const REF = process.env.RHUE_REF ?? "main";
 const TOKEN = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
 const DIR = resolve(ROOT, process.env.RHUE_DIR ?? "../rhue");
