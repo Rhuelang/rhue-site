@@ -1,0 +1,17 @@
+--!strict
+local Account = {}
+Account.__index = Account
+
+function Account.new(owner: string, balance: number)
+    return setmetatable({ owner = owner, balance = balance }, Account)
+end
+
+function Account:deposit(n: number)
+    self.balance += n   -- self is typed, self.balance = "x" won't check
+end
+
+Account.__tostring = function(a) return `{a.owner}: ${a.balance}` end
+
+local acct = Account.new("Aalto", 10)
+acct:deposit(5)
+print(acct)   -- Aalto: $15

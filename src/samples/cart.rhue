@@ -1,0 +1,17 @@
+--!strict
+type Item = { name: string, price: number, tags: {string}? }
+
+local function total(items: {Item}): number
+    local sum = 0
+    for _, item in items do
+        sum += item.price
+    end
+    return sum
+end
+
+local function firstTag(item: Item): string
+    if not item.tags then   -- skip this and it's "could be nil"
+        return "untagged"
+    end
+    return item.tags[1]
+end
