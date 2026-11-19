@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "tag": "M26",
+      "title": "Hot reload",
+      "body": "Reload modules while scripts are running. Functions get swapped in place so anything holding them picks up the new code, and module state carries over."
+    },
+    {
+      "tag": "1.0.0",
+      "title": "Publish to crates.io",
+      "body": "The crates already package fine, it just needs pushing."
+    },
+    {
+      "tag": "Next",
+      "title": "Faster calls, again",
+      "body": "Calls are still where Luau is furthest ahead (`callbacks` is about 3.3× faster there), so another round on that."
+    }
+  ]
+}

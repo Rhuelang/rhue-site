@@ -1,0 +1,19 @@
+{
+  "measured": "M23",
+  "note": "Fastest of five runs, best of two sessions. Wall times drift between sessions, so compare ratios, not raw ms.",
+  "luau": "Luau 0.709 (mlua, interpreter at -O2)",
+  "rhai": "Rhai 1.27 (hand ports, integers)",
+  "rows": [
+    { "name": "arrays", "stresses": "table.create, table.move, table.insert, shifting a window", "rhue": 7.1, "luau": 3.2, "rhai": null },
+    { "name": "callbacks", "stresses": "closures made in a hot loop", "rhue": 15.1, "luau": 4.6, "rhai": null },
+    { "name": "classes", "stresses": "setmetatable classes, inherited methods, operator metamethods", "rhue": 302, "luau": 136, "rhai": null },
+    { "name": "closures", "stresses": "upvalues, closure creation, small calls", "rhue": 61.8, "luau": 22.4, "rhai": 407 },
+    { "name": "coroutines", "stresses": "a wrap generator, resume/yield ping-pong", "rhue": 77.9, "luau": 33.9, "rhai": null },
+    { "name": "fib", "stresses": "recursive calls and returns", "rhue": 34.0, "luau": 13.3, "rhai": 258 },
+    { "name": "loops", "stresses": "numeric for, arithmetic, comparisons", "rhue": 89.4, "luau": 78.3, "rhai": 1346 },
+    { "name": "methods", "stresses": "obj:method(), field reads and writes, small tables", "rhue": 154, "luau": 70.1, "rhai": 611 },
+    { "name": "patterns", "stresses": "match, gmatch and gsub over 40,000 lines", "rhue": 206, "luau": 105, "rhai": null },
+    { "name": "strings", "stresses": "concatenation, interning, string.*", "rhue": 74.8, "luau": 53.6, "rhai": 395 },
+    { "name": "tables", "stresses": "arrays, records, pairs/ipairs", "rhue": 66.6, "luau": 37.4, "rhai": 349 }
+  ]
+}
