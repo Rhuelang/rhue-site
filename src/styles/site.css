@@ -180,6 +180,9 @@ pre.shiki .line:empty::before { content: " "; }
 .page-head { padding: 48px 0 8px; display: flex; flex-direction: column; gap: var(--space-3); align-items: flex-start; }
 .toc { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
 .toc .aa-btn { border-radius: 9999px; }
+.filter-row { width: 100%; display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-3); }
+/* same height as the input box under the label, so it sits level with it and not with the label */
+.filter-count { height: 36px; display: flex; align-items: center; font-size: 13px; color: var(--text-subtle); font-variant-numeric: tabular-nums; }
 .pill-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
 .pill-row .aa-pill-dashed { height: 22px; font-size: 12px; line-height: 16px; padding: 0 var(--space-2); }
 .doc-body { padding: var(--space-6) 0 96px; }

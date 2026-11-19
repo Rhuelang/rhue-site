@@ -43,7 +43,7 @@ export default function Design() {
           </a>
         </div>
         <Show when={d.decisions > 0}>
-          <div style={{ width: "100%", display: "flex", "align-items": "center", gap: "12px", "flex-wrap": "wrap" }}>
+          <div class="filter-row">
             <TextField
               label="Filter key decisions"
               placeholder="coroutines, GC, M19…"
@@ -52,7 +52,7 @@ export default function Design() {
               onChange={setQuery}
               style={{ flex: "1 1 280px" }}
             />
-            <span class="muted" style={{ "font-size": "13px" }}>{shown()} of {d.decisions}</span>
+            <span class="filter-count">{shown()} of {d.decisions}</span>
           </div>
         </Show>
       </div>
