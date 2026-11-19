@@ -67,9 +67,9 @@ function makeMarked(hl: Highlighter) {
       code({ text, lang }: Tokens.Code) {
         // ```mermaid stays as source, the page draws it (Prose.tsx). the <pre> is what shows until then
         if ((lang ?? "").toLowerCase() === "mermaid") {
-          return `<div class="md-mermaid" data-src="${escapeHtml(text)}"><pre>${escapeHtml(text)}</pre></div>\n`;
+          return `<div class="md-mermaid aa-scroll" data-src="${escapeHtml(text)}"><pre>${escapeHtml(text)}</pre></div>\n`;
         }
-        return `<div class="md-code">${highlight(hl, text, lang)}</div>\n`;
+        return `<div class="md-code aa-scroll">${highlight(hl, text, lang)}</div>\n`;
       },
       heading({ tokens, depth }: Tokens.Heading) {
         const inner = this.parser.parseInline(tokens);
