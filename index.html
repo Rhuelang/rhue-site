@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" class="aa-scroll">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rhue: Luau-style scripting for Rust</title>
+  <meta name="description" content="An embeddable scripting language for Rust. Looks like Luau, embeds like Rhai, runs on register bytecode.">
+  <meta name="theme-color" content="#DF7A4C">
+  <meta property="og:title" content="Rhue">
+  <meta property="og:description" content="Luau-style scripting, embedded in Rust.">
+  <meta property="og:image" content="https://rhue.dev/brand/logo.svg">
+  <meta property="og:url" content="https://rhue.dev">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    // pick the theme before first paint so it doesn't flash
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("rhue-theme"); } catch (e) {}
+      if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+</head>
+<body>
+  <noscript>Rhue's site needs JavaScript. The code's at <a href="https://github.com/gyfdb/rhue">github.com/gyfdb/rhue</a>.</noscript>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

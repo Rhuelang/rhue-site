@@ -1,0 +1,31 @@
+{
+  "name": "rhue-site",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "sync": "bun scripts/sync-content.ts",
+    "dev": "vite",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "bun run typecheck && vite build",
+    "preview": "bun run build && wrangler dev",
+    "deploy": "bun run build && wrangler deploy"
+  },
+  "packageManager": "bun@1.4.4",
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@solidjs/router": "^0.15",
+    "solid-js": "^1.9.3"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4",
+    "marked": "^18.2.1",
+    "shiki": "^4.6.0",
+    "typescript": "^5.9",
+    "vite": "^6",
+    "vite-plugin-solid": "^2.11.17",
+    "wrangler": "^4.165.0"
+  }
+}

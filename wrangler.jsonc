@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rhue-site",
+  "compatibility_date": "2026-11-01",
+
+  // TODO: account_id goes here (or CLOUDFLARE_ACCOUNT_ID in CI)
+  // "account_id": "",
+
+  // assets only, no worker script. vite build → dist
+  "assets": {
+    "directory": "./dist",
+    // client-side routes (/design, /changelog/m25) fall back to index.html
+    "not_found_handling": "single-page-application"
+  },
+
+  // TODO: point rhue.dev at it once the zone's on the account
+  "routes": [
+    { "pattern": "rhue.dev", "custom_domain": true }
+  ],
+  "workers_dev": false
+}
