@@ -3,8 +3,7 @@
   "name": "rhue-site",
   "compatibility_date": "2026-11-01",
 
-  // TODO: account_id goes here (or CLOUDFLARE_ACCOUNT_ID in CI)
-  // "account_id": "",
+  "account_id": "2b62d2b133a61c5044a548ee33573ae6",
 
   // assets only, no worker script. vite build → dist
   "assets": {
@@ -13,7 +12,6 @@
     "not_found_handling": "single-page-application"
   },
 
-  // TODO: point rhue.dev at it once the zone's on the account
   "routes": [
     { "pattern": "rhue.dev", "custom_domain": true }
   ],
