@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/brand/logo.svg" width="180" alt="Rhue logo">
   <h1>rhue-site</h1>
-  <p>The website for <a href="https://github.com/gyfdb/rhue"><b>Rhue</b></a>, live at <a href="https://rhue.dev"><b>rhue.dev</b></a>. Solid, TypeScript and Vite, built with bun and served off Cloudflare. The docs on it all come straight out of the rhue repo, so it's never out of date with the actual language.</p>
+  <p>The website for <a href="https://github.com/rhuelang/rhue"><b>Rhue</b></a>, live at <a href="https://rhue.dev"><b>rhue.dev</b></a>. Solid, TypeScript and Vite, built with bun and served off Cloudflare. The docs on it all come straight out of the rhue repo, so it's never out of date with the actual language.</p>
   <p>
     <a href="https://github.com/rhuelang/rhue-site/actions/workflows/deploy.yml"><img src="https://img.shields.io/github/actions/workflow/status/rhuelang/rhue-site/deploy.yml?branch=main&amp;style=for-the-badge&amp;label=deploy" alt="Deploy status"></a>
     <a href="https://rhue.dev"><img src="https://img.shields.io/badge/rhue.dev-live-e07b4f?style=for-the-badge" alt="rhue.dev"></a>
@@ -25,7 +25,7 @@ bun run sync          # reads ..\rhue, a checkout next to this one
 bun run dev
 ```
 
-`RHUE_DIR` points it at a checkout somewhere else, and `RHUE_REPO=gyfdb/rhue` reads GitHub instead (plus `GITHUB_TOKEN` while it's private). Editing anything in `content/` while `dev` is running reloads the page with it, handy for checking how a changelog entry looks before it goes into rhue.
+`RHUE_DIR` points it at a checkout somewhere else, and `RHUE_REPO=rhuelang/rhue` reads GitHub instead (plus `GITHUB_TOKEN` while it's private). Editing anything in `content/` while `dev` is running reloads the page with it, handy for checking how a changelog entry looks before it goes into rhue.
 
 ## 📦 Where the content comes from
 

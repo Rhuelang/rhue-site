@@ -327,7 +327,7 @@ function loadMeta() {
   if (!isObj(meta)) throw new ContentError("meta.json", "should be an object");
   return {
     version: optStr(meta, "version", "meta.json") ?? "0.1.0",
-    repo: optStr(meta, "repo", "meta.json") ?? "gyfdb/rhue",
+    repo: optStr(meta, "repo", "meta.json") ?? "rhuelang/rhue",
     commit: optStr(meta, "commit", "meta.json") ?? null,
     syncedAt: optStr(meta, "syncedAt", "meta.json") ?? null,
   };

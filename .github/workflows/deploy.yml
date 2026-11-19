@@ -14,8 +14,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # where the docs come from. set the RHUE_REPO variable if it moves (rhuelang/rhue, say)
-  RHUE_REPO: ${{ vars.RHUE_REPO || 'gyfdb/rhue' }}
+  # where the docs come from. set the RHUE_REPO variable if it ever moves
+  RHUE_REPO: ${{ vars.RHUE_REPO || 'rhuelang/rhue' }}
 
 jobs:
   build:

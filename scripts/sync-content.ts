@@ -136,7 +136,7 @@ const version = /\[workspace\.package\][^[]*?\bversion\s*=\s*"([^"]+)"/.exec(car
 const commit = await src.commit();
 const meta = {
   version: version ?? "0.1.0",
-  repo: REMOTE ?? process.env.RHUE_PUBLIC_REPO ?? "gyfdb/rhue",
+  repo: REMOTE ?? process.env.RHUE_PUBLIC_REPO ?? "rhuelang/rhue",
   commit,
   syncedAt: new Date().toISOString(),
 };
