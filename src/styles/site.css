@@ -157,6 +157,9 @@ pre.shiki .line:empty::before { content: " "; }
 .prose pre code { padding: 0; background: none; }
 .prose ul, .prose ol { padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
 .prose li > p { margin: 0; }
+.md-mermaid { overflow-x: auto; padding: 20px 16px; border-radius: var(--radius-xl); background: var(--base); border: 1px solid var(--line); text-align: center; }
+.md-mermaid > pre { margin: 0; text-align: left; font: 400 13px/20px var(--font-mono); color: var(--text-subtle); white-space: pre; }
+.md-mermaid svg { display: inline-block; height: auto; }
 .md-code { overflow-x: auto; padding: 14px 16px; border-radius: var(--radius-xl); background: var(--recessed); border: 1px solid var(--line); }
 
 /* "**Label.** text" lists become one bordered card of entries */
@@ -205,3 +208,4 @@ pre.shiki .line:empty::before { content: " "; }
 .empty .tile-icon { width: 52px; height: 52px; border-radius: var(--radius-xl); }
 .empty .tile-icon .aa-icon { font-size: 26px; }
 .tile code, .lead code { font-size: 0.88em; padding: 1px 5px; border-radius: var(--radius-sm); background: var(--fill); color: var(--text-strong); }
+.md-mermaid-error { margin: 0 0 var(--space-2); text-align: left; font-size: 13px; color: var(--text-danger); }

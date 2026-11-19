@@ -65,6 +65,10 @@ function makeMarked(hl: Highlighter) {
   md.use({
     renderer: {
       code({ text, lang }: Tokens.Code) {
+        // ```mermaid stays as source, the page draws it (Prose.tsx). the <pre> is what shows until then
+        if ((lang ?? "").toLowerCase() === "mermaid") {
+          return `<div class="md-mermaid" data-src="${escapeHtml(text)}"><pre>${escapeHtml(text)}</pre></div>\n`;
+        }
         return `<div class="md-code">${highlight(hl, text, lang)}</div>\n`;
       },
       heading({ tokens, depth }: Tokens.Heading) {
@@ -114,6 +118,9 @@ function decorate(html: string) {
   });
   return html;
 }
+
+const escapeHtml = (s: string) =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 const plain = (s: string) =>
   s.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'");
