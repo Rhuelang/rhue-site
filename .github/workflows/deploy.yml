@@ -1,0 +1,92 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  # the rhue repo pings this when its docs, changelog or bench numbers change
+  repository_dispatch:
+    types: [rhue-updated]
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # where the docs come from. set the RHUE_REPO variable if it moves (rhuelang/rhue, say)
+  RHUE_REPO: ${{ vars.RHUE_REPO || 'gyfdb/rhue' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # only the bits the site reads, no need for the whole compiler
+      - name: Check out rhue
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.RHUE_REPO }}
+          ref: ${{ github.event.client_payload.ref || 'main' }}
+          # private repo needs a token with read access, public works with the default one
+          token: ${{ secrets.RHUE_READ_TOKEN || github.token }}
+          path: .rhue
+          sparse-checkout: |
+            docs
+            changelog
+            bench/results.json
+            assets
+            CHANGELOG.md
+            Cargo.toml
+          sparse-checkout-cone-mode: false
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
+
+      - run: bun install --frozen-lockfile
+
+      - name: Sync content
+        run: bun run sync
+        env:
+          RHUE_DIR: .rhue
+          RHUE_PUBLIC_REPO: ${{ env.RHUE_REPO }}
+
+      - run: bun run build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://rhue.dev
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
+
+      - run: bun install --frozen-lockfile
+
+      # TODO: CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID go in the repo's secrets
+      - name: Deploy to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          packageManager: bun
+          command: deploy
