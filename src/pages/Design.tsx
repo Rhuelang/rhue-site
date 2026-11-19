@@ -1,6 +1,6 @@
 import { createEffect, createSignal, For, onMount, Show } from "solid-js";
 import design from "virtual:rhue-content/design";
-import { Pill, TextField } from "../aalto";
+import { ButtonGroup, Pill, TextField } from "../aalto";
 import { REPO_URL } from "../components/Layout";
 import { Prose } from "../components/Prose";
 import { SectionNav } from "../components/SectionNav";
@@ -35,9 +35,11 @@ export default function Design() {
         <Show when={d.intro}><p class="lead" innerHTML={d.intro} /></Show>
         <div class="toc">
           <span class="muted" style={{ "font-size": "12px", "font-weight": 500 }}>On this page</span>
-          <For each={d.toc}>{(t) => (
-            <a class="aa-sl aa-btn aa-btn-outline aa-btn-s" href={"#" + t.id} onClick={(e) => { if (glideToId(t.id)) e.preventDefault(); }}>{t.text}</a>
-          )}</For>
+          <ButtonGroup variant="connected" label="On this page">
+            <For each={d.toc}>{(t) => (
+              <a class="aa-sl aa-btn aa-btn-secondary aa-btn-s" href={"#" + t.id} onClick={(e) => { if (glideToId(t.id)) e.preventDefault(); }}>{t.text}</a>
+            )}</For>
+          </ButtonGroup>
           <a class="aa-sl aa-btn aa-btn-ghost aa-btn-s" href={`${REPO_URL}/blob/main/docs/DESIGN.md`} rel="noopener">
             <span class="aa-icon" aria-hidden="true">open_in_new</span>Source
           </a>
