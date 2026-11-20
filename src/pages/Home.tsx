@@ -6,7 +6,13 @@ import { LinkButton, REPO_URL } from "../components/Layout";
 import { SectionNav } from "../components/SectionNav";
 import { glideToId, useTitle } from "../lib/site";
 
-const INSTALL = `rhue = { git = "${REPO_URL}" }`;
+// it's on crates.io now, so pin to major.minor of whatever version got synced
+const MINOR = content.meta.version.split(".").slice(0, 2).join(".");
+const INSTALL = {
+  toml: { label: "Cargo.toml", line: `rhue = "${MINOR}"` },
+  cli: { label: "Command line", line: "cargo add rhue" },
+};
+type InstallWay = keyof typeof INSTALL;
 
 const FEATURES = [
   { icon: "code", title: "Luau syntax", body: "String interpolation, metatables and setmetatable classes, tail calls, coroutines, generic for with __iter, vectors." },
@@ -20,11 +26,11 @@ const FEATURES = [
 ];
 
 const TOOLS = [
-  { icon: "terminal", name: "rhue", what: "Runs files, -e snippets and compiled chunks. On its own it's a REPL, and locals stick around between entries.", cmd: `cargo install --git ${REPO_URL} rhue-cli` },
+  { icon: "terminal", name: "rhue", what: "Runs files, -e snippets and compiled chunks. On its own it's a REPL, and locals stick around between entries.", cmd: "cargo install rhue-cli" },
   { icon: "science", name: "rhue test", what: "Finds *_test.rhue files and runs each in a fresh engine, with typed expect() matchers.", cmd: "rhue test --filter cart" },
   { icon: "format_align_left", name: "rhue fmt", what: "Keeps your line breaks and comments. If it would change your program it refuses instead.", cmd: "rhue fmt --check src/*.rhue" },
-  { icon: "lightbulb", name: "rhue-lsp", what: "Diagnostics as you type, hover, inlay hints, quick fixes, rename, definitions and references across modules.", cmd: "cargo install --path crates/rhue-lsp" },
-  { icon: "bug_report", name: "rhue-dap", what: "Breakpoints with conditions, hit counts and logpoints, stepping, watch expressions, expandable tables.", cmd: "cargo install --path crates/rhue-dap" },
+  { icon: "lightbulb", name: "rhue-lsp", what: "Diagnostics as you type, hover, inlay hints, quick fixes, rename, definitions and references across modules.", cmd: "cargo install rhue-lsp" },
+  { icon: "bug_report", name: "rhue-dap", what: "Breakpoints with conditions, hit counts and logpoints, stepping, watch expressions, expandable tables.", cmd: "cargo install rhue-dap" },
 ];
 
 const SECTIONS = [
@@ -49,9 +55,10 @@ export default function Home() {
   const [tab, setTab] = createSignal(content.samples[0].id);
   const sample = createMemo(() => content.samples.find((s) => s.id === tab()) ?? content.samples[0]);
   const [copied, setCopied] = createSignal(false);
+  const [way, setWay] = createSignal<InstallWay>("toml");
 
   const copy = async () => {
-    try { await navigator.clipboard.writeText(INSTALL); } catch { /* no clipboard, nothing to do */ }
+    try { await navigator.clipboard.writeText(INSTALL[way()].line); } catch { /* no clipboard, nothing to do */ }
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   };
@@ -70,8 +77,8 @@ export default function Home() {
           <div class="hero-copy">
             <Pill variant="dashed">
               v{content.meta.version}
-              <Show when={content.meta.milestone}> · {content.meta.milestone}</Show>
-              {" "}· not on crates.io yet
+              {/* releases tag themselves with the version, so only show milestone tags */}
+              <Show when={content.meta.milestone && content.meta.milestone !== content.meta.version}> · {content.meta.milestone}</Show>
             </Pill>
             <h1>Luau-style scripting, <span>embedded in Rust</span></h1>
             <p class="lead">
@@ -84,9 +91,14 @@ export default function Home() {
               <LinkButton href="/design" variant="ghost" size="l">Design notes</LinkButton>
             </div>
             <div id="quick-start" class="copyline">
-              <span class="copyline-label">Cargo.toml</span>
+              <SegmentedButton
+                label="How to add it"
+                options={(Object.keys(INSTALL) as InstallWay[]).map((k) => ({ value: k, label: INSTALL[k].label }))}
+                value={way()}
+                onChange={(v) => { setWay(v as InstallWay); setCopied(false); }}
+              />
               <div class="copyline-box">
-                <code class="aa-scroll">{INSTALL}</code>
+                <code class="aa-scroll">{INSTALL[way()].line}</code>
                 <IconButton icon={copied() ? "check" : "content_copy"} label="Copy dependency line" size="m" onClick={copy} />
               </div>
             </div>
