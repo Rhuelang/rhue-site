@@ -53,6 +53,22 @@ jobs:
           RHUE_DIR: .rhue
           RHUE_PUBLIC_REPO: ${{ env.RHUE_REPO }}
 
+      # the playground's engine: rhue and rhue-lsp built for the browser
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: playground
+
+      # has to match the wasm-bindgen in playground/Cargo.lock
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: wasm-bindgen-cli@0.2.106
+
+      - run: bun run wasm
+
       - run: bun run build
 
       - uses: actions/upload-artifact@v6
