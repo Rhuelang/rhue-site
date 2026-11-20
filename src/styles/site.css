@@ -188,6 +188,9 @@ pre.shiki .line:empty::before { content: " "; }
 .filter-count { height: 36px; display: flex; align-items: center; font-size: 13px; color: var(--text-subtle); font-variant-numeric: tabular-nums; }
 .pill-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
 .pill-row .aa-pill-dashed { height: 22px; font-size: 12px; line-height: 16px; padding: 0 var(--space-2); }
+.pill-join { display: inline-flex; align-items: stretch; }
+.pill-join > .aa-pill:not(:last-child) { border-radius: var(--radius-full) 0 0 var(--radius-full); }
+.pill-join > .aa-pill:not(:first-child) { border-radius: 0 var(--radius-full) var(--radius-full) 0; border-left: 0; }
 .doc-body { padding: var(--space-6) 0 96px; }
 
 .split { display: flex; flex-wrap: wrap; gap: var(--space-8); align-items: flex-start; padding: var(--space-6) 0 96px; }

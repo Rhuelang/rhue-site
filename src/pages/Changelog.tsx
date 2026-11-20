@@ -60,9 +60,11 @@ export default function Changelog() {
                 <>
                   <div style={{ display: "flex", "flex-direction": "column", gap: "8px" }}>
                     <div class="pill-row">
-                      <Pill variant="brand">{e().tag}</Pill>
-                      <Show when={e().version}><Pill>v{e().version}</Pill></Show>
-                      <Show when={e().date}><Pill variant="dashed">{e().date}</Pill></Show>
+                      {/* version and date read as one piece */}
+                      <span class="pill-join">
+                        <Pill variant="brand">{e().version ? `v${e().version}` : e().tag}</Pill>
+                        <Show when={e().date}><Pill variant="dashed">{e().date}</Pill></Show>
+                      </span>
                     </div>
                     <h2 class="h-page" style={{ "font-size": "24px", "line-height": "30px" }}>{e().title}</h2>
                   </div>
