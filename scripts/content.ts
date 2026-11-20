@@ -388,7 +388,8 @@ export function rhueContent(): Plugin {
     resolveId: (id) => (MODULES.includes(id) ? "\0" + id : undefined),
     async load(id) {
       if (!id.startsWith("\0" + VIRTUAL)) return;
-      this.addWatchFile(CONTENT);
+      // no addWatchFile here, vite turns watched files into imports and a windows
+      // path isn't one. configureServer below watches content/ instead
       return `export default ${JSON.stringify(pick(await get(), id.slice(1)))};`;
     },
     configureServer(server: ViteDevServer) {
