@@ -11,6 +11,8 @@ import "./styles/site.css";
 const Design = lazy(() => import("./pages/Design"));
 const Changelog = lazy(() => import("./pages/Changelog"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+// monaco and the wasm only load for this one
+const Playground = lazy(() => import("./playground/Playground"));
 
 render(
   () => (
@@ -18,6 +20,7 @@ render(
       <Route path="/" component={Home} />
       <Route path="/design" component={Design} />
       <Route path="/changelog/:slug?" component={Changelog} />
+      <Route path="/playground" component={Playground} />
       <Route path="*404" component={NotFound} />
     </Router>
   ),

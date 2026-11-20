@@ -1,5 +1,5 @@
 import { type JSX, Show } from "solid-js";
-import { A } from "@solidjs/router";
+import { A, useLocation } from "@solidjs/router";
 import content from "virtual:rhue-content";
 import { Button, IconButton } from "../aalto";
 import { theme, toggleTheme } from "../lib/site";
@@ -18,6 +18,7 @@ export function SiteHeader() {
           <A href="/" end activeClass="active">Home</A>
           <A href="/design" activeClass="active">Design notes</A>
           <A href="/changelog" activeClass="active">Changelog</A>
+          <A href="/playground" activeClass="active">Playground</A>
         </nav>
         <div class="header-actions">
           <IconButton
@@ -46,6 +47,7 @@ export function SiteFooter() {
           </Show>
         </span>
         <nav aria-label="Project links">
+          <A href="/playground">Playground</A>
           <A href="/design">Design notes</A>
           <A href="/changelog">Changelog</A>
           <a href={REPO_URL} rel="noopener">GitHub</a>
@@ -57,11 +59,13 @@ export function SiteFooter() {
 }
 
 export function Layout(props: { children?: JSX.Element }) {
+  // the playground fills the window, a footer under it would just be in the way
+  const app = () => useLocation().pathname.startsWith("/playground");
   return (
     <>
       <SiteHeader />
-      <main id="top">{props.children}</main>
-      <SiteFooter />
+      <main id="top" classList={{ "is-app": app() }}>{props.children}</main>
+      <Show when={!app()}><SiteFooter /></Show>
     </>
   );
 }

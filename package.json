@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "sync": "bun scripts/sync-content.ts",
+    "wasm": "bun scripts/build-wasm.ts",
     "dev": "vite",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "build": "bun run typecheck && vite build",
@@ -18,6 +19,7 @@
   "dependencies": {
     "@solidjs/router": "^0.15",
     "mermaid": "^12.3.0",
+    "monaco-editor": "^0.57.0",
     "solid-js": "^1.9.3"
   },
   "devDependencies": {

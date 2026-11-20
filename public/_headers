@@ -2,6 +2,10 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  # cross-origin isolation, so the playground's debugger can pause a script with
+  # Atomics.wait. credentialless keeps google fonts loading without CORP headers
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: credentialless
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
