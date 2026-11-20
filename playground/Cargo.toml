@@ -1,0 +1,30 @@
+[package]
+name = "rhue-playground"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+rhue = { version = "2.2", features = ["tooling"] }
+rhue-lsp = "2.2"
+lsp-types = "0.97"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+wasm-bindgen = "=0.2.106"
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+# rhue-lsp 2.2.0 only turns uris into paths where there's a real filesystem.
+# vendor/rhue-lsp is that release plus the fix for plain wasm, drop this once
+# rhue has it
+[patch.crates-io]
+rhue-lsp = { path = "vendor/rhue-lsp" }
